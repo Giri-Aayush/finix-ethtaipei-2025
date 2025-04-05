@@ -49,6 +49,23 @@ Write Operations (Requires session with private key):
 6. clear_session
    • Manually clear your session when done
    • For security, always clear your session after use
+   
+Dune Analytics Operations:
+1. get_dune_data
+   • Fetch data from Dune Analytics queries
+   • Returns paginated results (10 results by default)
+
+2. search_dune_data
+   • Search within Dune Analytics data for specific values
+   • Filter by column or search across all columns
+
+3. get_dune_summary
+   • Get statistical summary of Dune Analytics data
+   • Includes column types, ranges, common values, etc.
+   
+4. clear_dune_cache
+   • Clear cached Dune Analytics data
+   • Useful when you want fresh data from Dune
 
 Example Commands:
 • "Check the balance for Celo address 0x123..."
