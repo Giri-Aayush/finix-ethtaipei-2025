@@ -2,7 +2,7 @@
 
 A powerful Model Context Protocol (MCP) server that allows Claude AI to interact directly with the Celo blockchain, Aave lending protocol, and Dune Analytics - all within your conversations.
 
-![Celo Explorer MCP](./Demo.mp4)
+![Celo Explorer MCP](./Area.gif)
 
 ## ✨ What is Celo Explorer MCP?
 
