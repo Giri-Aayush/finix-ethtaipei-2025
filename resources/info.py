@@ -8,76 +8,102 @@ def register_info_resources(mcp: FastMCP):
     def get_server_info() -> str:
         """Get information about this MCP server"""
         return """
-Welcome to the Celo Explorer MCP Server!
+# Celo Explorer MCP Server
 
-This server helps you interact with the Celo blockchain directly through Claude.
+This MCP server provides comprehensive tools for interacting with the Celo blockchain, Aave DeFi protocol, and Dune Analytics.
 
-Read Operations:
-1. get_celo_balances
-   • Check CELO, cUSD, and cEUR balances for any address
-   • Works on both mainnet and Alfajores testnet
+## 📱 Celo Wallet Tools
 
-2. get_celo_transactions
-   • View recent transactions for any Celo address
-   • Customize how many blocks to scan and transactions to return
+* **get_celo_balances**: Check token balances (CELO, cUSD, cEUR) for any address
+  Example: "What's the CELO balance for address 0x123..."
 
-3. get_celo_token_list
-   • List all known tokens held by a Celo address
-   • Shows token balances with proper decimal formatting
+* **get_celo_transactions**: View recent transactions for any address
+  Example: "Show me the last 5 transactions for 0x456... on Alfajores"
 
-Write Operations (Requires session with private key):
-1. create_transaction_session
-   • Create a secure session for transactions
-   • Session expires after 5 minutes for security
+* **get_celo_token_list**: List all tokens held by any address
+  Example: "What tokens does 0x789... hold on mainnet?"
 
-2. add_private_key
-   • Add your private key to the session
-   • Key is stored only in memory and cleared after use
+## 💸 Transaction Tools
 
-3. send_celo
-   • Send CELO tokens to any address
-   • Works on both mainnet and Alfajores
+* **create_transaction_session**: Create a secure session for transactions
+  Example: "I want to create a transaction session for my address"
 
-4. send_celo_token
-   • Send stablecoins (cUSD, cEUR) to any address
-   • Works on both mainnet and Alfajores
+* **add_private_key**: Add a private key to your session (stored only in memory)
+  Example: "I'd like to add my private key to my session"
 
-5. sign_message
-   • Cryptographically sign a message
-   • Returns signature that can verify your identity
+* **send_celo**: Send CELO tokens to another address
+  Example: "Send 0.1 CELO to 0xabc..."
 
-6. clear_session
-   • Manually clear your session when done
-   • For security, always clear your session after use
-   
-Dune Analytics Operations:
-1. get_dune_data
-   • Fetch data from Dune Analytics queries
-   • Returns paginated results (10 results by default)
+* **send_celo_token**: Send stablecoins (cUSD, cEUR) to another address
+  Example: "Send 5 cUSD to 0xdef..."
 
-2. search_dune_data
-   • Search within Dune Analytics data for specific values
-   • Filter by column or search across all columns
+* **sign_message**: Sign a message with your private key
+  Example: "Sign the message 'Hello, Celo!'"
 
-3. get_dune_summary
-   • Get statistical summary of Dune Analytics data
-   • Includes column types, ranges, common values, etc.
-   
-4. clear_dune_cache
-   • Clear cached Dune Analytics data
-   • Useful when you want fresh data from Dune
+* **clear_session**: Manually clear your session for security
+  Example: "Please clear my transaction session"
 
-Example Commands:
-• "Check the balance for Celo address 0x123..."
-• "Show me the last 10 transactions for 0x456... on Alfajores"
-• "Create a transaction session for address 0x789..."
+## 🏦 Aave DeFi Tools (Mainnet Only)
 
-Resources:
-• greeting://{name} - Get a personalized greeting
-• celo://networks - View available Celo networks
-• info://server - This server information
-• info://celo - General Celo blockchain information
-• info://security - Important security information for transactions
+* **create_aave_session**: Create a secure session for Aave operations
+  Example: "Create an Aave session for my address"
+
+* **add_aave_private_key**: Add your private key to Aave session
+  Example: "Add my private key to my Aave session"
+
+* **supply_celo**: Supply CELO to Aave to earn interest
+  Example: "Supply 1 CELO to Aave"
+
+* **withdraw_celo**: Withdraw your CELO from Aave
+  Example: "Withdraw all my CELO from Aave" or "Withdraw 0.5 CELO from Aave"
+
+* **set_celo_collateral**: Enable or disable using CELO as collateral
+  Example: "Set my CELO as collateral in Aave"
+
+* **borrow_usdc**: Borrow USDC against your CELO collateral
+  Example: "Borrow 10 USDC from Aave"
+
+* **repay_usdc**: Repay your USDC debt to Aave
+  Example: "Repay 5 USDC to Aave" or "Repay all my USDC debt"
+
+* **clear_aave_session**: Manually clear your Aave session
+  Example: "Clear my Aave session"
+
+## 📊 Dune Analytics Tools
+
+* **get_dune_data**: Fetch data from Dune Analytics queries
+  Example: "Show me the first 10 results from Dune query 3196876"
+
+* **search_dune_data**: Search within Dune Analytics data
+  Example: "Search for 'ethereum' in Dune query 3196876"
+
+* **get_dune_summary**: Get statistical summary of Dune Analytics data
+  Example: "Summarize the data in Dune query 3196876"
+
+* **clear_dune_cache**: Clear cached Dune Analytics data
+  Example: "Clear the Dune data cache"
+
+## 📄 Information Resources
+
+* **info://server**: This general information (what you're reading now)
+* **info://celo**: General information about the Celo blockchain
+* **info://aave**: Information about Aave on Celo
+* **info://dune**: Information about Dune Analytics integration
+* **aave://workflow**: Step-by-step guide for using Aave
+* **aave://risks**: Information about risks when using Aave
+* **dune://query_examples**: Example Dune queries for analysis
+* **celo://networks**: Information about available Celo networks
+* **greeting://{name}**: Get a personalized greeting
+
+## ⚠️ Security Notes
+
+* Private keys are only stored in memory temporarily
+* Sessions expire after 5 minutes
+* Sessions are cleared after transactions
+* Always clear sessions when finished
+* All transactions on mainnet use real funds
+
+For more information, visit the GitHub repository: https://github.com/yourusername/celo-explorer-mcp
 """
     
     @mcp.resource("info://celo")
@@ -108,34 +134,28 @@ Useful Links:
 • Block Explorer: https://explorer.celo.org
 """
 
-    @mcp.resource("info://security")
-    def get_security_info() -> str:
-        """Get security information for Celo transactions"""
+    @mcp.resource("celo://networks")
+    def get_celo_networks() -> str:
+        """Get information about available Celo networks"""
         return """
-Important Security Information for Celo Transactions
+Available Celo Networks:
 
-Private Key Security:
-• Never share your private key with anyone, not even this service
-• When using the transaction tools, your private key is:
-  - Only stored temporarily in memory (never on disk)
-  - Automatically cleared after 5 minutes or after a transaction
-  - Never logged or transmitted outside the server
+1. Mainnet
+   • Production network for real value transactions
+   • RPC Endpoint: https://forno.celo.org
+   • Explorer: https://explorer.celo.org
+   • Features: All protocols including Aave, Ubeswap, Mobius, etc.
 
-How Session Security Works:
-1. create_transaction_session creates a session linked to your public address
-2. add_private_key temporarily stores your key in memory for that session only
-3. After a transaction completes, your key is immediately cleared
-4. Sessions automatically expire after 5 minutes
-5. You can manually clear a session using the clear_session tool
+2. Alfajores Testnet
+   • Test network with free test tokens
+   • RPC Endpoint: https://alfajores-forno.celo-testnet.org
+   • Explorer: https://alfajores.celoscan.io
+   • Faucet: https://celo.org/developers/faucet
+   • Note: Aave is NOT available on Alfajores testnet
 
-Best Practices:
-• Use the Alfajores testnet for testing before mainnet
-• Always verify transaction details before confirming
-• Clear your session immediately after completing transactions
-• For maximum security, use testnet when possible
-
-Warning:
-By using the write operations in this MCP server, you acknowledge that you
-understand the risks of handling private keys. While we've implemented security
-measures, no system is 100% secure. Use these tools at your own risk.
+Network-specific notes:
+• Transactions on mainnet use real funds
+• Transactions on testnet use test tokens (without real value)
+• Some advanced features like Aave are only available on mainnet
+• For testing, use Alfajores testnet when possible
 """

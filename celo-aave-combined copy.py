@@ -33,7 +33,7 @@ LENDING_POOL_ADDRESS = "0x3E59A31363E2ad014dcbc521c4a0d5757d9f3402"  # Aave lend
 CELO_TOKEN_ADDRESS = "0x471EcE3750Da237f93B8E339c536989b8978a438"    # CELO token address
 
 # Explorer URL for transaction tracking
-EXPLORER_URL = "https://celoscan.io/tx/"
+EXPLORER_URL = "https://celoscan.io/tx/0x"
 
 # ABI for ERC20 tokens (CELO)
 ERC20_ABI = [
